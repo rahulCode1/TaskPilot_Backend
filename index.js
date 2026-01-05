@@ -18,7 +18,7 @@ initializeDb()
 
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://fsp-1-assignment-backend-nine.vercel.app/api'],
+  origin: ['http://localhost:3000', 'https://fsp-1-assignment-backend-nine.vercel.app'],
   credentials: true
 }))
 
