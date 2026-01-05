@@ -18,7 +18,7 @@ initializeDb()
 
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://fsp-1-assignment-backend-3vxl-5ver46pf4.vercel.app'],
+  origin: ['http://localhost:3000', 'https://fsp-1-assignment-backend-nine.vercel.app/api'],
   credentials: true
 }))
 
@@ -33,7 +33,7 @@ app.use("/api/project", projectRoute)
 app.use("/api/tags", tagRoute)
 
 app.use((req, res, next) => {
-    next(new HttpError("This route doesn't exist.", 404))
+  next(new HttpError("This route doesn't exist.", 404))
 })
 
 
@@ -42,5 +42,5 @@ app.use(errorHandler)
 const PORT = process.env.PORT
 
 app.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
+  console.log(`Server running on ${PORT}`)
 })
