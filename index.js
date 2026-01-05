@@ -17,8 +17,10 @@ initializeDb()
 
 
 
-app.use(cors())
-
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://fsp-1-assignment-backend-3vxl-5ver46pf4.vercel.app'],
+  credentials: true
+}))
 
 
 app.use(express.json())
