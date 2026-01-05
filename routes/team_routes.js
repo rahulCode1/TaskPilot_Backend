@@ -14,9 +14,9 @@ const idValidation = [
     param("id").isMongoId().withMessage("Team id must be present.")
 ]
 
-router.post("/",authCheck, teamValidation, addTeam)
+router.post("/", teamValidation, addTeam)
 router.get("/", getTeams)
 router.get("/:id", idValidation, getTeamDetails)
-router.delete("/:id",authCheck, idValidation, deleteTeam)
+router.delete("/:id", idValidation, deleteTeam)
 
 module.exports = router 

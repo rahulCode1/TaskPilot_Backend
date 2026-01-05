@@ -18,7 +18,7 @@ const projectDetailsValidation = [
 
 
 
-router.post("/",authCheck, projectValidation, addProject)
+router.post("/", projectValidation, addProject)
 router.get("/", getAllProjects)
 router.get("/:id", projectDetailsValidation, getProjectDetails)
 

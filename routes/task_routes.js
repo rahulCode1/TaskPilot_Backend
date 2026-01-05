@@ -20,9 +20,9 @@ const idValidation = [
     param("id").isMongoId().withMessage("Task id must be present.")
 ]
 
-router.post("/",authCheck, taskValidation, addTask)
+router.post("/", taskValidation, addTask)
 router.get("/", getTasks)
 router.get("/:id", idValidation, taskDetails)
-router.patch("/:id",authCheck, idValidation, updateTask)
+router.patch("/:id", idValidation, updateTask)
 
 module.exports = router
