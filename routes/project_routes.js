@@ -18,8 +18,8 @@ const projectDetailsValidation = [
 
 
 
-router.post("/", projectValidation, addProject)
+router.post("/", projectValidation,authCheck, addProject)
 router.get("/", getAllProjects)
 router.get("/:id", projectDetailsValidation, getProjectDetails)
 
-module.exports = router 
+module.exports = router
