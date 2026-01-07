@@ -36,7 +36,7 @@ const addTask = async (req, res, next) => {
     }
 
 
-    
+
 
     const task = new Task({
         name,
@@ -109,11 +109,11 @@ const updateTask = async (req, res, next) => {
         return next(new HttpError("Invalid task status.", 422, errors.array()));
     }
 
-    
+
     try {
         const task = await Task.findByIdAndUpdate(
             req.params.id,
-            { status : "Completed"},
+            req.body,
             { new: true }
         );
 
@@ -129,6 +129,34 @@ const updateTask = async (req, res, next) => {
     }
 };
 
+const deleteTask = async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return next(
+            new HttpError("Invalid task id.", 422, errors.array())
+        );
+    }
+
+    try {
+        const task = await Task.findById(req.params.id);
+
+       
+
+        if (!task) {
+            return next(new HttpError("Task not found", 404));
+        }
+
+        await task.deleteOne();
+
+        res.status(200).json({
+            message: "Task deleted successfully",
+        });
+    } catch (error) {
+        next(error);
+    }
+};
 
 
-module.exports = { addTask, getTasks, taskDetails, updateTask }
+
+module.exports = { addTask, getTasks, taskDetails, updateTask, deleteTask }

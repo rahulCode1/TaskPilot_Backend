@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const { check, param } = require("express-validator")
-const { addTask, getTasks, taskDetails, updateTask } = require("../controllers/task_controller")
+const { addTask, getTasks, taskDetails, updateTask, deleteTask } = require("../controllers/task_controller")
 const authCheck = require("../middleware/checkAuth")
 
 
@@ -20,9 +20,10 @@ const idValidation = [
     param("id").isMongoId().withMessage("Task id must be present.")
 ]
 
-router.post("/",authCheck, taskValidation, addTask)
+router.post("/", authCheck, taskValidation, addTask)
 router.get("/", getTasks)
 router.get("/:id", idValidation, taskDetails)
-router.patch("/:id",authCheck, idValidation, updateTask)
+router.delete("/:id", authCheck, idValidation, deleteTask)
+router.patch("/:id", authCheck, idValidation, updateTask)
 
 module.exports = router

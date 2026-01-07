@@ -37,7 +37,10 @@ const addTags = async (req, res, next) => {
 const getAllTags = async (req, res, next) => {
     try {
         const tags = await Tag.find().select("name")
-        res.status(200).json({ tags: tags.map(team => team.toObject({ getters: true })) })
+        const tagsArray = tags.map(tag => tag.name)
+
+ 
+        res.status(200).json({ tags: tagsArray })
     } catch (error) {
         next(error)
     }

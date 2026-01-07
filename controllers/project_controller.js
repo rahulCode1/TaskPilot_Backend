@@ -52,12 +52,41 @@ const getProjectDetails = async (req, res, next) => {
 const getAllProjects = async (req, res, next) => {
     try {
         const projects = await Project.find().sort({ createdAt: -1 })
+      
+       
         res.status(200).json({ projects: projects.map(project => project.toObject({ getters: true })) })
     } catch (error) {
         next(error)
     }
 }
 
+const deleteProject = async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return next(
+            new HttpError("Invalid task id.", 422, errors.array())
+        );
+    }
+
+    try {
+        const project = await Project.findById(req.params.id);
 
 
-module.exports = { addProject, getProjectDetails, getAllProjects }
+
+        if (!project) {
+            return next(new HttpError("project not found", 404));
+        }
+
+        await project.deleteOne();
+
+        res.status(200).json({
+            message: "project deleted successfully",
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+module.exports = { addProject, getProjectDetails, getAllProjects, deleteProject }
