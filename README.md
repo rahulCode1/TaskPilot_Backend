@@ -7,14 +7,14 @@ Built with React Express/Node backend, MongoDB, database & JWT-based authenticat
 
 ## Demo Link
 
-[Live API](https://fsp-1-assignment-backend-mu.vercel.app)
+[Live API](https://task-pilot-backend-sand.vercel.app/api/task)
 
 ---
 
 ## Quick Start
 
 ```
-git clone https://github.com/rahulCode1/Workasana_Backend.git
+git clone https://github.com/rahulCode1/TaskPilot_Backend.git
 cd workasana_backend
 npm install
 npm start  # or `npm start`
