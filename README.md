@@ -1,4 +1,4 @@
-# Workasana API
+# TaskPilot API
 
 An REST API where you can browse, add, edit & view detailed task.
 Built with React Express/Node backend, MongoDB, database & JWT-based authentication.
